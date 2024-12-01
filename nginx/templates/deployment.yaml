@@ -1,0 +1,39 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    tier: frontend
+    app: nginx
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selectors:
+     matchlabels:
+       tier: frontend
+       app: nginx
+     templets:
+       metadata:
+         labels:
+           tier: frontend
+           app: nginx
+         spec:
+          container:
+          - name: nginx
+            image: raidi/frontend:{{ .Values.deployment.imageVersion }}
+---
+apiVersion: v1
+kind: service
+metadata:
+  name: nginx
+spec:
+  selectors:
+    labels:
+      tier: frontend
+      app: nginx
+    ports: 
+    - name: nginx-svc-port
+      protocol: TCP
+      port: 80 # service port
+      targetport: 80 #Container port
+
+
