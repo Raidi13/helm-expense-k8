@@ -7,33 +7,32 @@ metadata:
     app: nginx
 spec:
   replicas: {{ .Values.deployment.replicas }}
-  selectors:
+  selector:
      matchlabels:
        tier: frontend
        app: nginx
-     templets:
+     template:
        metadata:
          labels:
            tier: frontend
            app: nginx
          spec:
-          container:
+          containers:
           - name: nginx
-            image: raidi/frontend:{{ .Values.deployment.imageVersion }}
+          # place holder
+            image: nginx:{{ .Values.deployment.imageVersion }}
 ---
 apiVersion: v1
 kind: service
 metadata:
   name: nginx
 spec:
-  selectors:
-    labels:
-      tier: frontend
-      app: nginx
-    ports: 
+  type: LoadBalancer
+  selector:
+    tier: frontend
+    app: nginx
+  ports: 
     - name: nginx-svc-port
       protocol: TCP
-      port: 80 # service port
+      port: {{ .Values.service.port }} # service port
       targetport: 80 #Container port
-
-
