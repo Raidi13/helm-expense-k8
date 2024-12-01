@@ -6,33 +6,33 @@ metadata:
     tier: frontend
     app: nginx
 spec:
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: {{ .Value.deployment.replicas }}
   selector:
-     matchlabels:
-       tier: frontend
-       app: nginx
-     template:
-       metadata:
-         labels:
-           tier: frontend
-           app: nginx
-         spec:
-          containers:
-          - name: nginx
-          # place holder
-            image: nginx:{{ .Values.deployment.imageVersion }}
+    matchlabels:
+      tier: frontend
+      app: nginx
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:{{ .Value.deployment.imageVersion }}
 ---
 apiVersion: v1
 kind: service
 metadata:
   name: nginx
 spec:
-  type: LoadBalancer
+  type: {{ .Values.service.type }}
   selector:
-    tier: frontend
-    app: nginx
-  ports: 
-    - name: nginx-svc-port
-      protocol: TCP
-      port: {{ .Values.service.port }} # service port
-      targetport: 80 #Container port
+     tier: frontend
+     app: nginx
+  ports:
+  - name: nginx.svc.port
+    protocol: TCP
+    port: {{ .Value.service.port }}
+    targetport: 80 # container port
+
