@@ -31,7 +31,7 @@ spec:
      tier: frontend
      app: nginx
   ports:
-  - name: nginx.svc.port
+  - name: nginx-svc-port
     protocol: TCP
     port: {{ .Values.service.port }}
     targetPort: 80 # container port
