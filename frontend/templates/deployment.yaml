@@ -33,7 +33,7 @@ spec:
               memory: 128Mi
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: frontend
   namespace: expense
