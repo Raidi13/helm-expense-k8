@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: raidi:frontend:{{.Values.deployment.imageVersion }}
+          image: raidi:frontend:{{ .Values.deployment.imageVersion }}
           resources:
             requests:
               cpu: 100m
