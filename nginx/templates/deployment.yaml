@@ -6,7 +6,7 @@ metadata:
     tier: frontend
     app: nginx
 spec:
-  replicas: {{ .Value.deployment.replicas }}
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchlabels:
       tier: frontend
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:{{ .Value.deployment.imageVersion }}
+        image: nginx:{{ .Values.deployment.imageVersion }}
 ---
 apiVersion: v1
 kind: service
@@ -33,6 +33,6 @@ spec:
   ports:
   - name: nginx.svc.port
     protocol: TCP
-    port: {{ .Value.service.port }}
+    port: {{ .Values.service.port }}
     targetport: 80 # container port
 
