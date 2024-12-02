@@ -22,7 +22,7 @@ spec:
         image: nginx:{{ .Values.deployment.imageVersion }}
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: nginx
 spec:
@@ -34,5 +34,5 @@ spec:
   - name: nginx.svc.port
     protocol: TCP
     port: {{ .Values.service.port }}
-    targetport: 80 # container port
+    targetPort: 80 # container port
 
