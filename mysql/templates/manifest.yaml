@@ -5,20 +5,20 @@ metadata:
   namespace: expense
   labels:
     app: mysql
-    tier: database
+    tier: db
     project: expense
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: mysql
-      tier: database
+      tier: db
       project: expense
   template:
     metadata:
       labels:
         app: mysql
-        tier: database
+        tier: db
         project: expense
     spec:
       containers:
@@ -33,7 +33,7 @@ metadata:
 spec:
   selector:
     app: mysql
-    tier: database
+    tier: db
     project: expense
   ports:
   - name: mysql-port
