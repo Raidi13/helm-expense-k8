@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
@@ -10,7 +10,7 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchlabels:
+    matchLabels:
       app: mysql
       tier: database
       project: expense
@@ -26,7 +26,7 @@ spec:
           image: raidi/mysql:{{ .Values.deployment.imageVersion }}
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: mysql
   namespace: expense
