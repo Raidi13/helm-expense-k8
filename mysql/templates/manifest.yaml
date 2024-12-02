@@ -14,16 +14,16 @@ spec:
       app: mysql
       tier: database
       project: expense
-    template:
-      metadata:
-        labels:
-          app: mysql
-          tier: database
-          project: expense
-      spec:
-        containers:
-        - name: mysql
-          image: raidi/mysql:{{ .Values.deployment.imageVersion }}
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: database
+        project: expense
+    spec:
+      containers:
+      - name: mysql
+        image: raidi/mysql:{{ .Values.deployment.imageVersion }}
 ---
 apiVersion: v1
 kind: Service
