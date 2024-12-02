@@ -25,12 +25,12 @@ spec:
         - name: frontend
           image: raidi:frontend:{{.Values.deployment.imageVersion }}
           resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 100m
-            memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
 ---
 apiVersion: v1
 kind: service
