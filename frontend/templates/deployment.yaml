@@ -8,7 +8,7 @@ metadata:
     tier: web
     project: expense
 spec:
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: { { .Values.deployment.replicas } }
   selectors:
     matchLabels:
       app: frontend
@@ -22,19 +22,19 @@ spec:
         project: expense
     spec:
       containers:
-      - name: frontend
-        image: raidi:frontend:{{.Values.deployment.imageVersion }}
-        resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits:
-          cpu: 100m
-          memory: 128Mi
+        - name: frontend
+          image: raidi:frontend:{{.Values.deployment.imageVersion }}
+          resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
 ---
 apiVersion: v1
 kind: service
-metadata: 
+metadata:
   name: frontend
   namespace: expense
 spec:
@@ -44,8 +44,7 @@ spec:
     tier: web
     project: expense
   ports:
-  - name: frontend-port
-    protocol: TCP
-    port: 8080 
-    targetport: 8080
-
+    - name: frontend-port
+      protocol: TCP
+      port: 8080
+      targetport: 8080
