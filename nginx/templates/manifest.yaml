@@ -37,4 +37,3 @@ spec:
     protocol: TCP
     port: {{ .Values.service.port }}
     targetPort: 80 # container port
-
