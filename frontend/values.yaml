@@ -3,3 +3,4 @@ deployment:
   imageVersion: v1
 hpa:
   cpuUtilzation: 15
+
